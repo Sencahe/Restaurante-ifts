@@ -1,0 +1,61 @@
+
+{% block producto%}
+
+{% set carrito = False %}
+
+{% if url_for(request.endpoint) == "/"%}
+
+    {% set form = 'method=POST action=/'%}
+    {% set button = 'Agregar'%}
+
+{% elif url_for(request.endpoint) == "/Carrito" %}
+
+    {% set form = 'method=POST action=/Carrito'%}
+    {% set button = 'Modificar'%}
+    {% set isCarrito = True %}
+{% endif %}
+
+            {% for producto in productos %}           
+                <div class="col mb-5">
+                    <div class="card h-100">
+                        <!-- Product image-->
+                        <img class="card-img-top p-1" src="{{producto.url_foto}}" alt="..." />
+                        <!-- Product details-->                            
+                        <div class="card-body p-4">
+                            <div class="text-center">                                    
+                            <!-- Product name-->
+                                <h5 class="fw-bolder">{{producto.nombre_producto}}</h5>
+                                <!-- Product price-->
+                                ${{producto.precio if not isCarrito else producto.precio * producto.cantidad}}
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="d-flex flex-row justify-content-center">
+                                <!-- Modify or Add-->
+                                <form {{form}} class="d-flex flex-row justify-content-center">
+                                    <div class='p-2'>
+                                        <button class="btn btn-outline-dark" type="submit" value="">{{button}}</button>
+                                    </div>
+                                    <div class='p-2'>
+                                        <input name="cantidad" type="number" value="{{producto.cantidad if isCarrito else '1'}}" class="btn btn-outline-dark" style="width: 82px" min="1"></input>
+                                        <Input name="id_producto" type="hidden" value="{{producto.id_producto}}" ></input>
+                                        <Input name="carritoIndex" type="hidden" value="{{loop.index0}}"></input>
+                                    </div>
+                                </form>
+                                <!-- Delete -->
+                                {% if isCarrito %}
+                                <div class='p-2'>
+                                    <form action="/Carrito" method="POST">
+                                        <button class="btn btn-danger" type="submit" value="">X</button> 
+                                         <Input name="carritoIndex" type="hidden" value="{{loop.index0}}" ></input>                
+                                     </form>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>                       
+                </div>     
+            {% endfor %}
+
+{% endblock producto%}

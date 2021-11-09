@@ -1,0 +1,46 @@
+{% extends  'templates/base.html' %}
+{% block base %}
+
+              
+        <!-- Section-->
+        <section class="py-5">    
+            
+            <div class="container px-4 px-lg-5 mt-5">
+
+                <h2 class="text-center pb-5">Tu Pedido</h2>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                        
+                    {% include  'templates/producto.html' %}
+                    {% block producto%}
+                    {% endblock producto%}            
+
+                </div>      
+
+                <h2 class="text-center pb-2">Datos de Envio</h2>
+                <form class="justify-content-center container col-6" action="/Pedido" method="POST">
+                    <div class="form-group pt-0">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Nombre">
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Apellido">
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="direccion">Direccion</label>
+                        <input type="text" name="direccion_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Direccion">
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="departamento">Departamento</label>
+                        <input type="text" name="departamento_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Departamento (aclarar si no aplica)">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Telefono</label>
+                        <input type="text" name="telefono_cliente" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su numero de Telefono">
+                    </div >
+                   <button type="submit" class="btn btn-primary text-center mt-3">Realizar Pedido</button>
+                </form>
+            </div>      
+        </section>
+
+{% endblock base %}
