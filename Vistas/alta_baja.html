@@ -1,0 +1,35 @@
+{% extends 'templates/base.html' %}
+{% block base %}
+
+<div class="container_alta">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">URL Foto</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Descuento</th>
+        <th scope="col">Stock</th>
+      </tr>
+    </thead>
+  {% for producto in productos %}
+
+    <tbody>
+      <tr>
+        <th scope="row">{{producto.id_producto}}</th>
+        <td>{{producto.url_foto}}</td>
+        <td>{{producto.nombre_producto}}</td>
+        <td>${{producto.precio}}</td>
+        <td>{{producto.descuento}} %</td>
+        <td>{{producto.stock}}</td>
+        <td><i class="fas fa-pencil-alt"></i></td>
+        <td><i class="fas fa-trash-alt"></i></td>
+      </tr>
+    </tbody>
+
+  {% endfor %}
+</table>
+</div>
+
+{% endblock base %}
