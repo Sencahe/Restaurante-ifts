@@ -1,0 +1,36 @@
+#contenedor {
+    position: relative;
+    margin: 0 auto;
+    width: 85%;
+    box-shadow: -15px 0px 15px -10px rgba(100, 100, 111, 0.9), 15px 0px 15px -10px rgba(100, 100, 111, 0.9), 10px 0px 15px 00px rgba(0,0,0,0);
+}
+
+.bg-dark {
+    background-color: rgba(255,61,0,1) !important;
+}
+
+.barra {
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+}
+
+.header_logo {
+    width: 7.5rem;
+    height: 7.5rem;
+    /* Arriba | Derecha | Abajo | Izquierda */
+    margin: 0 1rem 0 1rem;
+    background: url("/Vistas/img/chef.png");
+}
+
+/*contiene el logo y la marca*/
+.container_brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+.brand {
+    font-family: 'Rosario', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
