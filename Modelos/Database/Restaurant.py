@@ -21,6 +21,11 @@ class Restaurant():
         if not Restaurant.__instance__:  
             Restaurant()  
         return Restaurant.__instance__
-    
 
 
+    @staticmethod  
+    def getConnectionString():  
+        if not Restaurant.__instance__:  
+            Restaurant()  
+        return Restaurant.__connectionString
+        

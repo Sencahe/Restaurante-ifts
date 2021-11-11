@@ -1,11 +1,10 @@
-from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Date
+from sqlalchemy import Column, Integer, String
 from Modelos.Database.Restaurant import Restaurant 
 
-
 Base = declarative_base()
-class Estados(Base):
+
+class Administrador(Base):
     
     __tablename__ = 'Administradores'
     
@@ -17,3 +16,5 @@ class Estados(Base):
     
     def __str__(self):
         return  "ID: " + self.id_administrador 
+
+Base.metadata.create_all(Restaurant.getInstance().engine)
