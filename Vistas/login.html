@@ -1,0 +1,15 @@
+{% extends 'templates/base.html' %}
+{% block base %}
+
+<div class="container_alta">
+    <div class="form">
+        <form class="login-form" action="" method="POST">
+          <input type="text" placeholder="usuario" name="usuario"/>
+          <input type="password" placeholder="contraseña" name="contraseña"/>
+          <button type="submit">Iniciar sesión</button>
+          <p class="message">No esta registrado? <a href="">Crea una cuenta</a></p>
+        </form>
+    </div>
+</div>
+
+{% endblock base %}

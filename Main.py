@@ -99,7 +99,15 @@ def seguimiento(id_pedido):
         
         return render_template('pedido.html', pedidoExists=True, pedido=pedido,productos=productos,estado=estado,total=total) 
     
+@app.route('/alta_baja', methods = ['GET','PUT','POST','DELETE'])
+def altaBaja():
+    productos = Productos.getAllProductos()
+    return render_template('alta_baja.html', productos=productos)
 
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    
+    return render_template('login.html')
 
 #------------- RUN -----------------------
 if __name__ == '__main__':
