@@ -23,18 +23,3 @@ class Producto(Base):
 
 Base.metadata.create_all(Restaurant.getInstance().engine)
 
-"""
-session = Restaurant.getInstance().session
-productos = session.query(Producto).all()
-for producto in productos:
-    print(producto)
-    
-producto = Producto(nombre_producto = 'Milanesa de Carpincho',
-                    url_foto = 'Vistas/img/MilanesaCarpincho.jpg',
-                    precio = 500,
-                    descuento = 0,
-                    stock = 10)
-
-print (producto)
-
-"""

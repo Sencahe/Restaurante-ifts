@@ -2,6 +2,7 @@
 {% block base %}
 
 <div class="container_alta">
+  <a type="submit" class="btn btn-dark text-center " href="/admin/alta">Añadir Producto</a>
   <table class="table">
     <thead>
       <tr>
@@ -23,8 +24,18 @@
         <td>${{producto.precio}}</td>
         <td>{{producto.descuento}} %</td>
         <td>{{producto.stock}}</td>
-        <td><i class="fas fa-pencil-alt"></i></td>
-        <td><i class="fas fa-trash-alt"></i></td>
+        <td>
+          <form action="/admin/modificacion" method="POST">
+            <button type="submit"><i class="fas fa-pencil-alt"></i></button>        
+            <input type="hidden" name="id_producto" value="{{producto.id_producto}}">
+          </form>
+        </td>
+        <td>
+           <form action="/admin/baja" method="POST">
+               <button type="submit"><i class="fas fa-trash-alt"></i></button>
+               <input type="hidden" name="id_producto" value="{{producto.id_producto}}">
+           </form>
+        </td>
       </tr>
     </tbody>
 

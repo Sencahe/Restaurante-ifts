@@ -1,0 +1,31 @@
+{% extends 'templates/base.html' %}
+{% block base %}
+
+                <form class="justify-content-center container col-6 pt-10" action="/admin/update" method="POST">
+                    <div class="form-group pt-0">
+                        <label for="nombre">Nombre Producto</label>
+                        <input type="text" name="nombre_producto" value="{{ producto.nombre_producto if isUpdate}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre de Producto">
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="direccion">Precio</label>
+                        <input type="number" name="precio" value="{{producto.precio if isUpdate}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Precio">
+                    </div>
+                    <div class="form-group pt-0">
+                        <label for="departamento">Stock</label>
+                        <input type="number"name="stock" value="{{producto.stock if isUpdate}}" name="departamento_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Stock">
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Descuento</label>
+                        <input type="number" name="descuento" value="{{producto.descuento if isUpdate}}" max="100" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Descuento">
+                    </div >
+                      <div class="form-group pt-0">
+                        <label for="apellido">Foto</label>
+                        <input type="text" name="url_foto" value="{{producto.url_foto if isUpdate}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Foto">
+                    </div>
+                     {% if isUpdate %}
+                    <input type="hidden" name="id_producto" value="{{producto.id_producto}}"></input>
+                     {% endif %}
+                   <button type="submit" class="btn btn-dark text-center mt-3">{{ 'Actualizar' if isUpdate else 'Añadir'}}</button>
+                </form>
+
+{% endblock base %}
