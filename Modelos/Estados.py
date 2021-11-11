@@ -15,7 +15,8 @@ class Estado(Base):
     
     def __str__(self):
         return  "ID: " + self.id_estado 
-    
+
+Base.metadata.create_all(Restaurant.getInstance().getEngine())
 #----------- SERVICIO -----------------
 
 def getEstadoById(id_estado):

@@ -29,6 +29,8 @@ class Pedido(Base):
     
     def __str__(self):
         return  " ID Pedido: " + str(self.id_pedido)
+
+Base.metadata.create_all(Restaurant.getInstance().getEngine())
     
  #----------- SERVICIOS -----------------
  

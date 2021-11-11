@@ -23,7 +23,9 @@ class Producto(Base):
         self.cantidad = cantidad
     
     def __str__(self):
-        return  "ID: " + str(self.id_producto) + " NOMBRE: " + self.nombre_producto 
+        return  "ID: " + str(self.id_producto) + " NOMBRE: " + self.nombre_producto
+
+Base.metadata.create_all(Restaurant.getInstance().getEngine())
     
 #--------- SERVICIOS ------------ 
 

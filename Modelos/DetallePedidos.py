@@ -18,6 +18,8 @@ class DetallePedido(Base):
     
     def __str__(self):
         return  "ID Producto: " + str(self.id_producto) + " ID Pedido: " + str(self.id_pedido)
+
+Base.metadata.create_all(Restaurant.getInstance().getEngine())
     
 #----------- DAO -----------------
 

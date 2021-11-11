@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 class Restaurant():
     
     __instance__ = None
-    __connectionString = "mssql://localhost/Restaurant?driver=ODBC+Driver+17+for+SQL+Server"
+    __connectionString = "mssql://DESKTOP-DC7ADPP\\PP2/Restaurant?driver=ODBC+Driver+17+for+SQL+Server"
     
     def __init__(self):
         if Restaurant.__instance__ is None:
@@ -21,6 +21,16 @@ class Restaurant():
         if not Restaurant.__instance__:  
             Restaurant()  
         return Restaurant.__instance__
-    
+
+
+    @staticmethod  
+    def getConnectionString():  
+        if not Restaurant.__instance__:  
+            Restaurant()  
+        return Restaurant.__connectionString
+
+
+    def getEngine(self):
+        return self.engine
 
 

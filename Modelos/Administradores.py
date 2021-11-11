@@ -17,3 +17,5 @@ class Estados(Base):
     
     def __str__(self):
         return  "ID: " + self.id_administrador 
+
+Base.metadata.create_all(Restaurant.getInstance().getEngine())
