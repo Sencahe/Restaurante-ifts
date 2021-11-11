@@ -41,7 +41,7 @@ def productoUpdate():
      
 
 
-@app.route('/admin/alta',methods = ['POST'])
+@app.route('/admin/alta',methods = ['POST','GET'])
 def alta(): 
     if request.method == 'POST':
         id_producto = ProductoService.addProducto(nombre_producto=request.form["nombre_producto"],

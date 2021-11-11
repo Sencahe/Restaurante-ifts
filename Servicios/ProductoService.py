@@ -20,7 +20,7 @@ def updateProducto(producto:Producto):
     session.add(producto)
     session.commit()
     
-def addProducto(nombre_producto:str,precio:float,stock:int,descuento:float,url_foto:str):
+def addProducto(nombre_producto,precio:float,stock:int,descuento:float,url_foto):
     session = Restaurant.getInstance().session
     producto = Producto(nombre_producto=nombre_producto,
                         precio=precio,

@@ -1,7 +1,7 @@
 {% extends 'templates/base.html' %}
 {% block base %}
 
-                <form class="justify-content-center container col-6 pt-10" action="/admin/update" method="POST">
+                <form class="justify-content-center container col-6 pt-10" action="{{'/admin/update' if isUpdate else '/admin/alta'}}" method="POST">
                     <div class="form-group pt-0">
                         <label for="nombre">Nombre Producto</label>
                         <input type="text" name="nombre_producto" value="{{ producto.nombre_producto if isUpdate}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese Nombre de Producto">
