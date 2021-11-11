@@ -1,9 +1,8 @@
-from flask import Flask, request, redirect
+from flask import request, redirect
 from flask import session
 from flask import render_template
 from flask.helpers import url_for
-from Modelos import Productos, DetallePedidos, Pedidos, Estados
-from Modelos.DetallePedidos import DetallePedido
+from Servicios import ProductoService
 from Main import app
 
 @app.route('/Carrito', methods = ['GET','PUT','POST','DELETE'])
@@ -29,7 +28,7 @@ def carrito():
     # Obtener Productos de Carrito
     productosVista = [] 
     for detalleCarrito in session["carrito"]:
-        producto = Productos.getProductoById(detalleCarrito["id_producto"])
+        producto = ProductoService.getProductoById(detalleCarrito["id_producto"])
         cantidad= detalleCarrito["cantidad"]
         subtotal = cantidad * producto.precio
         productoVista = {"producto":producto,"cantidad":cantidad,"subtotal":subtotal}

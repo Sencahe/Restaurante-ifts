@@ -1,9 +1,4 @@
-from flask import Flask, request, redirect
-from flask import session
-from flask import render_template
-from flask.helpers import url_for
-from Modelos import Productos, DetallePedidos, Pedidos, Estados
-from Modelos.DetallePedidos import DetallePedido
+from flask import Flask
 
 app = Flask(__name__, template_folder = 'Vistas',static_folder='Vistas')
 app.secret_key = "SecretKey"

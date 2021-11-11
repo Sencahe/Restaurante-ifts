@@ -28,9 +28,4 @@ class Restaurant():
         if not Restaurant.__instance__:  
             Restaurant()  
         return Restaurant.__connectionString
-
-
-    def getEngine(self):
-        return self.engine
-
-
+        

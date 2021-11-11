@@ -1,9 +1,8 @@
-from flask import Flask, request, redirect
+from flask import request, redirect
 from flask import session
 from flask import render_template
 from flask.helpers import url_for
-from Modelos import Productos, DetallePedidos, Pedidos, Estados
-from Modelos.DetallePedidos import DetallePedido
+from Servicios import ProductoService
 from Main import app
 
 @app.route('/', methods = ['GET','POST'])
@@ -22,7 +21,7 @@ def index():
         return redirect(url_for('index'))
     
     # Obtener Productos
-    productos = Productos.getAllProductos()
+    productos = ProductoService.getAllProductos()
     productosVista = []
     for producto in productos:
         productoVista = {"producto":producto,"cantidad":1,"subtotal":producto.precio}

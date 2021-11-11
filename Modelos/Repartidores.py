@@ -1,11 +1,10 @@
-from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Date
+from sqlalchemy import Column, Integer, String
 from Modelos.Database.Restaurant import Restaurant 
 
-
 Base = declarative_base()
-class Estados(Base):
+
+class Repartidor(Base):
     
     __tablename__ = 'Repartidores'
     
@@ -17,4 +16,4 @@ class Estados(Base):
     def __str__(self):
         return  "ID: " + self.id_repartidor 
 
-Base.metadata.create_all(Restaurant.getInstance().getEngine())
+Base.metadata.create_all(Restaurant.getInstance().engine)

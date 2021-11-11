@@ -1,9 +1,8 @@
-from flask import Flask, request, redirect
+from flask import request, redirect
 from flask import session
 from flask import render_template
 from flask.helpers import url_for
-from Modelos import Productos, DetallePedidos, Pedidos, Estados
-from Modelos.DetallePedidos import DetallePedido
+from Servicios import ProductoService, DetallePedidoService, PedidoService, EstadoService
 from Main import app
 
 @app.route('/Pedido', methods = ['POST'])
@@ -18,7 +17,7 @@ def pedido():
     
     session['carrito'] = []
 
-    id_pedido = Pedidos.addPedido(nombre_cliente,
+    id_pedido = PedidoService.addPedido(nombre_cliente,
                                   apellido_cliente,
                                   direccion_cliente,
                                   departamento_cliente,
@@ -33,18 +32,18 @@ def pedido():
 @app.route('/Pedido/<id_pedido>')
 def seguimiento(id_pedido):   
     
-    pedido = Pedidos.getPedidoById(id_pedido=id_pedido)
+    pedido = PedidoService.getPedidoById(id_pedido=id_pedido)
     
     if pedido is None:
         return render_template('pedido.html', pedidoExists=False) 
     else:
-        estado = Estados.getEstadoById(pedido.id_estado)
-        detallesPedido = DetallePedidos.getDetallesPedidoByPedidoId(id_pedido=id_pedido)
+        estado = EstadoService.getEstadoById(pedido.id_estado)
+        detallesPedido = DetallePedidoService.getDetallesPedidoByPedidoId(id_pedido=id_pedido)
         #Obtener productos del pedido
         productosVista = [] 
         total = 0
         for detallePedido in detallesPedido:
-            producto = Productos.getProductoById(detallePedido.id_producto)
+            producto = ProductoService.getProductoById(detallePedido.id_producto)
             cantidad = detallePedido.cantidad
             subtotal = producto.precio * cantidad
             total = total + subtotal
