@@ -34,5 +34,4 @@ def addPedido(nombre_cliente,apellido_cliente,direccion_cliente,departamento_cli
                                         id_producto=detalle["id_producto"],
                                         cantidad=detalle["cantidad"])
     
-    session.close()
     return pedido.id_pedido
