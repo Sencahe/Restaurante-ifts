@@ -8,13 +8,16 @@ from Modelos.DetallePedidos import DetallePedido
 app = Flask(__name__, template_folder = 'Vistas',static_folder='Vistas')
 app.secret_key = "SecretKey"
 
+
+#------------------------------------------------------
+#                       INDEX 
+#------------------------------------------------------
 @app.route('/', methods = ['GET','POST'])
 def index():
     # Iniciar carrito
     if 'carrito' not in session:
         session['carrito'] = []
-    # Obtener Productos
-    productos = Productos.getAllProductos()
+    
     # Agregar a carrito
     if request.method == 'POST':
         id_producto = int(request.form["id_producto"])
@@ -24,9 +27,18 @@ def index():
         session['carrito'] = list  
         return redirect(url_for('index'))
     
-    return render_template('index.html', productos=productos)
+    # Obtener Productos
+    productos = Productos.getAllProductos()
+    productosVista = []
+    for producto in productos:
+        productoVista = {"producto":producto,"cantidad":1,"subtotal":producto.precio}
+        productosVista.append(productoVista)
+    
+    return render_template('index.html', productosVista=productosVista)
 
-
+#--------------------------------------------------------
+#                       CARRITO
+#--------------------------------------------------------
 @app.route('/Carrito', methods = ['GET','PUT','POST','DELETE'])
 def carrito():
     # Iniciar carrito
@@ -48,15 +60,20 @@ def carrito():
         return redirect(url_for('carrito'))
     
     # Obtener Productos de Carrito
-    productos = [] 
-    for productoCarrito in session["carrito"]:
-        producto = Productos.getProductoById(productoCarrito["id_producto"])
-        producto.cantidad = productoCarrito["cantidad"]
-        productos.append(producto)    
+    productosVista = [] 
+    for detalleCarrito in session["carrito"]:
+        producto = Productos.getProductoById(detalleCarrito["id_producto"])
+        cantidad= detalleCarrito["cantidad"]
+        subtotal = cantidad * producto.precio
+        productoVista = {"producto":producto,"cantidad":cantidad,"subtotal":subtotal}
+        productosVista.append(productoVista)    
         
-    return render_template('carrito.html', productos=productos)
+    return render_template('carrito.html', productosVista=productosVista)
 
 
+#--------------------------------------------------------
+#                       PEDIDO 
+#--------------------------------------------------------
 @app.route('/Pedido', methods = ['POST'])
 def pedido():
     
@@ -78,7 +95,9 @@ def pedido():
         
     return redirect(url_for('seguimiento',id_pedido=id_pedido))
 
-
+#-----------------------------------------------------------
+#                        SEGUIMIENTO 
+#-----------------------------------------------------------
 @app.route('/Pedido/<id_pedido>')
 def seguimiento(id_pedido):   
     
@@ -89,27 +108,41 @@ def seguimiento(id_pedido):
     else:
         estado = Estados.getEstadoById(pedido.id_estado)
         detallesPedido = DetallePedidos.getDetallesPedidoByPedidoId(id_pedido=id_pedido)
-        productos = [] 
+        #Obtener productos del pedido
+        productosVista = [] 
         total = 0
         for detallePedido in detallesPedido:
             producto = Productos.getProductoById(detallePedido.id_producto)
-            producto.cantidad = detallePedido.cantidad
-            productos.append(producto)
-            total = total + producto.precio * producto.cantidad
-        
-        return render_template('pedido.html', pedidoExists=True, pedido=pedido,productos=productos,estado=estado,total=total) 
+            cantidad = detallePedido.cantidad
+            subtotal = producto.precio * cantidad
+            total = total + subtotal
+            productoVista = {"producto":producto,"cantidad":cantidad,"subtotal":subtotal}
+            productosVista.append(productoVista)
+                 
+        return render_template('pedido.html', pedidoExists=True, pedido=pedido,productosVista=productosVista,estado=estado,total=total) 
     
+#------------------------------------------------------
+#                       ALTA - BAJA 
+#------------------------------------------------------
+
 @app.route('/alta_baja', methods = ['GET','PUT','POST','DELETE'])
 def altaBaja():
     productos = Productos.getAllProductos()
     return render_template('alta_baja.html', productos=productos)
+
+#------------------------------------------------------
+#                       LOGIN 
+#------------------------------------------------------
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
     
     return render_template('login.html')
 
-#------------- RUN -----------------------
+
+
+#----------------------- RUN -----------------------
+
 if __name__ == '__main__':
     app.run(debug=True,port=8000)
 

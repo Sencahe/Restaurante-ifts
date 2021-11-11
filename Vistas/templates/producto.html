@@ -15,7 +15,11 @@
     {% set isCarrito = True %}
 {% endif %}
 
-            {% for producto in productos %}           
+            {% for productoVista in productosVista %}
+                {% set producto = productoVista["producto"] %}
+                {% set cantidad = productoVista["cantidad"] %}
+                {% set subtotal = productoVista["subtotal"] %}
+
                 <div class="col mb-5">
                     <div class="card h-100 card_shadow">
                         <!-- Product image-->
@@ -26,7 +30,7 @@
                             <!-- Product name-->
                                 <h5 class="fw-bolder">{{producto.nombre_producto}}</h5>
                                 <!-- Product price-->
-                                ${{producto.precio if not isCarrito else producto.precio * producto.cantidad}}
+                                ${{subtotal}}
                             </div>
                         </div>
                         <!-- Product actions-->
@@ -38,7 +42,7 @@
                                         <button class="btn btn-outline-dark" type="submit" value="">{{button}}</button>
                                     </div>
                                     <div class='p-2'>
-                                        <input name="cantidad" type="number" value="{{producto.cantidad if isCarrito else '1'}}" class="btn btn-outline-dark" style="width: 82px" min="1"></input>
+                                        <input name="cantidad" type="number" value="{{cantidad}}" class="btn btn-outline-dark" style="width: 82px" min="1"></input>
                                         <Input name="id_producto" type="hidden" value="{{producto.id_producto}}" ></input>
                                         <Input name="carritoIndex" type="hidden" value="{{loop.index0}}"></input>
                                     </div>

@@ -30,7 +30,6 @@ class Producto(Base):
 def getAllProductos():
     session = Restaurant.getInstance().session
     productos = session.query(Producto).all()
-    session.close()
     return productos
 
 def getProductoById(id:int):
@@ -38,7 +37,8 @@ def getProductoById(id:int):
     try:
         producto = session.query(Producto).filter_by(id_producto = id).one()
         return producto
-    except:
+    except Exception as e:
+        print(e)
         return None
     
     

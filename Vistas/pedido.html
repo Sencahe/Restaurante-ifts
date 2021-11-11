@@ -20,12 +20,17 @@
                         </thead>
                         <tbody>
 
-                        {%for producto in productos%}
+                        {%for productoVista in productosVista%}
+                            {% set producto = productoVista["producto"] %}
+                            {% set cantidad = productoVista["cantidad"] %}
+                            {% set subtotal = productoVista["subtotal"] %}
+
                             <tr>
                                 <td>{{producto.nombre_producto}}</td>
-                                <td>{{producto.cantidad}}</td>
-                                <td>${{producto.precio * producto.cantidad}}</td>
+                                <td>{{cantidad}}</td>
+                                <td>${{subtotal}}</td>
                             </tr>
+
                         {% endfor %}
 
                         </tbody>

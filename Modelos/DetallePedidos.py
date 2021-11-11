@@ -11,8 +11,9 @@ class DetallePedido(Base):
     
     __tablename__ = 'Detalle_Pedidos'
     
-    id_producto = Column(Integer(), primary_key=True,nullable=False)
-    id_pedido =  Column(Integer(), primary_key=True,nullable=True)
+    id_detalle_pedido =  Column(Integer(), primary_key=True)
+    id_producto = Column(Integer(), nullable=False)
+    id_pedido =  Column(Integer(), nullable=True)
     cantidad = Column(Integer(), nullable = False)
     
     def __str__(self):
