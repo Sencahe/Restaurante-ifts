@@ -122,3 +122,64 @@
     color: rgba(255,61,0,1);
     text-decoration: none;
 }
+.container_account {
+    display: flex;
+    margin: 0 auto;
+    width: 95%;
+    /*align-items: center;*/
+    justify-content: center;
+  }
+.left, .center {
+      width: 35%;
+}
+.right {
+    width: 30%;
+}
+.left .form-group, .center .form-group {
+    width: 95%;
+    margin:  0 auto;
+}
+
+.chef_hat {
+    width: 80%;
+    height: 80%;
+    /* Arriba | Derecha | Abajo | Izquierda */
+    margin: 0 auto;
+    /*background: url("/Vistas/img/Group\ 18.svg");*/
+    background-image: url("/Vistas/img/chefhat.svg");
+    background-size: cover;
+}
+
+.separador {
+    padding-top: 1rem;
+}
+
+.btn-orange {
+    width: 100%;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    background-color:  rgba(255,61,0,1);
+    border: 1px solid rgba(255,61,0,1);
+        border-top-color: rgba(255,61,0,1);
+        border-right-color: rgba(255,61,0,1);
+        border-bottom-color: rgba(255,61,0,1);
+        border-left-color: rgba(255,61,0,1);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.btn-orange:hover {
+    background-color: black;
+    border-color: black;
+}

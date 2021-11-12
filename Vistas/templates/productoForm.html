@@ -1,6 +1,6 @@
 {% extends 'templates/base.html' %}
 {% block base %}
-
+<div class="separador"></div>
                 <form class="justify-content-center container col-6 pt-10" action="{{'/admin/update' if isUpdate else '/admin/alta'}}" method="POST">
                     <div class="form-group pt-0">
                         <label for="nombre">Nombre Producto</label>
@@ -27,5 +27,6 @@
                      {% endif %}
                    <button type="submit" class="btn btn-dark text-center mt-3">{{ 'Actualizar' if isUpdate else 'Añadir'}}</button>
                 </form>
+                <div class="separador"></div>
 
 {% endblock base %}

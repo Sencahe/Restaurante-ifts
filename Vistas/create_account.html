@@ -1,0 +1,75 @@
+{% extends 'templates/base.html' %}
+{% block base %}
+
+<div class="separador"></div>
+<h2 class="text-center pb-2">Alta de usuario</h2>
+<form class="justify-content-center container col-12" action="/altausuario" method="POST">
+    <div class="container_account">
+        <div class="left">
+            <div class="form-group pt-0">
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre_cliente" class="form-control" id="nombre" aria-describedby="emailHelp"
+                    placeholder="Ingrese su Nombre">
+            </div>
+            <div class="form-group pt-0">
+                <label for="apellido">Apellido</label>
+                <input type="text" name="apellido_cliente" class="form-control" id="apellido"
+                    aria-describedby="emailHelp" placeholder="Ingrese su Apellido">
+            </div>
+            <div class="form-group pt-0">
+                <label for="direccion">Nro. de documento</label>
+                <input type="text" name="nro_documento_cliente" class="form-control" id="nro_documento"
+                    aria-describedby="emailHelp" placeholder="Ingrese su Nro. de Documento">
+            </div>
+            <div class="form-group pt-0">
+                <label for="departamento">E-mail</label>
+                <input type="text" name="email_cliente" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Ingrese su E-mail">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Reingrese su e-mail</label>
+                <input type="text" name="email2_cliente" class="form-control" id="email2"
+                    placeholder="Reingrese su E-mail">
+            </div>
+        </div>
+        <div class="center">
+            <div class="form-group pt-0">
+                <label for="nombre">Tel&eacute;fono</label>
+                <input type="text" name="telefono_cliente" class="form-control" id="telefono" aria-describedby="emailHelp"
+                    placeholder="Ingrese su Tel&eacute;fono">
+            </div>
+            <div class="form-group pt-0">
+                <label for="apellido">Calle</label>
+                <input type="text" name="calle_cliente" class="form-control" id="calle" aria-describedby="emailHelp" 
+                    placeholder="Ingrese la Calle">
+            </div>
+            <div class="form-group pt-0">
+                <label for="direccion">Nro.</label>
+                <input type="text" name="nro_documento_cliente" class="form-control" id="nro_documento"
+                    aria-describedby="emailHelp" placeholder="Ingrese el Nro.">
+            </div>
+            <div class="form-group pt-0">
+                <label for="departamento">Barrio</label>
+                <input type="text" name="email_cliente" class="form-control" id="email" aria-describedby="emailHelp"
+                    placeholder="Ingrese el Barrio">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Localidad</label>
+                <input type="text" name="email2_cliente" class="form-control" id="email2"
+                    placeholder="Ingrese la Localidad">
+            </div>
+            <button type="submit" class="btn-orange text-center mt-3">ENVIAR</button>
+        </div>
+        <div class="right">
+            <div class="chef_hat">
+            </div>
+        </div>
+    </div>
+    
+</form>
+<div class="separador"></div>
+
+
+
+
+{% endblock base %}

@@ -9,4 +9,8 @@ def login():
     
     return render_template('login.html')
 
+@app.route('/create_account', methods = ['GET', 'POST'])
+def createAccount():
+    
+    return render_template('create_account.html')
 
