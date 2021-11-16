@@ -1,0 +1,49 @@
+{% extends 'templates/base.html' %}
+{% block base %}
+
+<div class="container_alta">
+    <div class="form">
+        <form class="login-form" action="/login" method="POST">
+          <input type="text" placeholder="usuario" name="usuario"/>
+          <input type="password" placeholder="contraseña" name="contraseña"/>
+          <button type="submit">Iniciar sesión</button>
+          <p class="message">No esta registrado? <a href="/create_account">Crea una cuenta</a></p>
+        </form>
+    </div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Nro. Documento</th>
+      <th scope="col">Email</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Calle</th>
+      <th scope="col">Nro. Calle</th>
+      <th scope="col">Barrio</th>
+      <th scope="col">Localidad</th>
+    </tr>
+  </thead>
+    <tbody>
+        <tr>
+          <th scope="row">{{user.id_cliente}}</th>
+          <td>{{user.nombre_cliente}}</td>
+          <td>{{user.apellido_cliente}}</td>
+          <td>{{user.nro_documento_cliente}}</td>
+          <td>{{user.email_cliente}} </td>
+          <td>{{user.telefono_cliente}}</td>
+          <td>{{user.calle_cliente}}</td>
+          <td>{{user.nro_calle_cliente}}</td>
+          <td>{{user.barrio_cliente}}</td>
+          <td>{{user.localidad_cliente}}</td>
+         
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+
+{% endblock base %}

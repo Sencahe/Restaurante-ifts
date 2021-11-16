@@ -3,7 +3,7 @@
 
 <div class="separador"></div>
 <h2 class="text-center pb-2">Alta de usuario</h2>
-<form class="justify-content-center container col-12" action="/altausuario" method="POST">
+<form class="justify-content-center container col-12" action="/create_account" method="POST">
     <div class="container_account">
         <div class="left">
             <div class="form-group pt-0">
@@ -31,6 +31,11 @@
                 <input type="text" name="email2_cliente" class="form-control" id="email2"
                     placeholder="Reingrese su E-mail">
             </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password_cliente" class="form-control" id="password"
+                    placeholder="Contraseña">
+            </div>
         </div>
         <div class="center">
             <div class="form-group pt-0">
@@ -45,17 +50,17 @@
             </div>
             <div class="form-group pt-0">
                 <label for="direccion">Nro.</label>
-                <input type="text" name="nro_documento_cliente" class="form-control" id="nro_documento"
+                <input type="text" name="nro_calle_cliente" class="form-control" id="nro_calle"
                     aria-describedby="emailHelp" placeholder="Ingrese el Nro.">
             </div>
             <div class="form-group pt-0">
                 <label for="departamento">Barrio</label>
-                <input type="text" name="email_cliente" class="form-control" id="email" aria-describedby="emailHelp"
+                <input type="text" name="barrio_cliente" class="form-control" id="barrio_cliente" aria-describedby="emailHelp"
                     placeholder="Ingrese el Barrio">
             </div>
             <div class="form-group">
                 <label for="telefono">Localidad</label>
-                <input type="text" name="email2_cliente" class="form-control" id="email2"
+                <input type="text" name="localidad_cliente" class="form-control" id="localidad"
                     placeholder="Ingrese la Localidad">
             </div>
             <button type="submit" class="btn-orange text-center mt-3">ENVIAR</button>
