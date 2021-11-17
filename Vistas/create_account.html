@@ -3,7 +3,7 @@
 
 <div class="separador"></div>
 <h2 class="text-center pb-2">Alta de usuario</h2>
-<form class="justify-content-center container col-12" action="/create_account" method="POST">
+<form class="justify-content-center container col-12" action="/create_account" method="POST" onsubmit="return validarForm()">
     <div class="container_account">
         <div class="left">
             <div class="form-group pt-0">
@@ -27,14 +27,14 @@
                     placeholder="Ingrese su E-mail">
             </div>
             <div class="form-group">
-                <label for="telefono">Reingrese su e-mail</label>
-                <input type="text" name="email2_cliente" class="form-control" id="email2"
-                    placeholder="Reingrese su E-mail">
-            </div>
-            <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password_cliente" class="form-control" id="password"
                     placeholder="Contraseña">
+            </div>
+            <div class="form-group">
+                <label for="password">Reingrese su Contraseña</label>
+                <input type="password" name="password2_cliente" class="form-control" id="password2"
+                    placeholder="Reingrese su Contraseña">
             </div>
         </div>
         <div class="center">
