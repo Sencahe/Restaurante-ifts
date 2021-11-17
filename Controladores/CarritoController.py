@@ -27,11 +27,13 @@ def carrito():
     
     # Obtener Productos de Carrito
     productosVista = [] 
+    total = 0
     for detalleCarrito in session["carrito"]:
         producto = ProductoService.getProductoById(detalleCarrito["id_producto"])
         cantidad= detalleCarrito["cantidad"]
         subtotal = cantidad * producto.precio
+        total = total + subtotal
         productoVista = {"producto":producto,"cantidad":cantidad,"subtotal":subtotal}
         productosVista.append(productoVista)    
         
-    return render_template('carrito.html', productosVista=productosVista)
+    return render_template('carrito.html', productosVista=productosVista, total=total)

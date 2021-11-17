@@ -15,10 +15,19 @@ def login():
         user = ClienteService.getClienteByEmail(username)
 
         if user and check_password_hash(user.password_cliente, request.form["contraseña"]):
-            return render_template('login2.html', user=user)
-        return "ERRORRRRRRRRRRR"
+            session['user'] = {"nombre_cliente":user.nombre_cliente,
+                               "id_cliente":user.id_cliente}      
+            return redirect(url_for('index'))
+        else:
+            return "ERRORRRRRRRRRRR"
     
     return render_template('login.html')
+
+@app.route('/logout', methods = ['GET', 'POST'])
+def logout():
+    session['user'] = None
+    return redirect(url_for('index'))
+
 
 @app.route('/create_account', methods = ['GET', 'POST'])
 def createAccount():
