@@ -28,7 +28,7 @@
 <body>
     <div id="contenedor">
         <!-- Navigation-->
-        {% if 'admin' not in url_for(request.endpoint)%}
+        {% if 'admin' not in request.path%}
             {% include 'templates/navigation.html' %}
             {% block navigation%}
             {% endblock navigation%}
