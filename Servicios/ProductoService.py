@@ -29,6 +29,7 @@ def addProducto(nombre_producto,precio:float,stock:int,descuento:float,url_foto)
                         url_foto=url_foto)
     session.add(producto)
     session.flush()
+    session.commit()
     return producto.id_producto
 
 def deleteProductoById(id:int): 

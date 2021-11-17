@@ -8,6 +8,7 @@ from Controladores.CarritoController import *
 from Controladores.PedidoController import *
 from Controladores.LoginController import *
 from Controladores.ProductoController import *
+from Controladores.AdminController import *
 
 #----------------------- RUN -----------------------
 

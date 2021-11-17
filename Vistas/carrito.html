@@ -16,30 +16,30 @@
 
                 </div>      
 
-                <h2 class="text-center pb-2">Datos de Envio</h2>
-                <form class="justify-content-center container col-6" action="/Pedido" method="POST">
-                    <div class="form-group pt-0">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" name="nombre_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Nombre">
-                    </div>
-                    <div class="form-group pt-0">
-                        <label for="apellido">Apellido</label>
-                        <input type="text" name="apellido_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Apellido">
-                    </div>
-                    <div class="form-group pt-0">
-                        <label for="direccion">Direccion</label>
-                        <input type="text" name="direccion_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Direccion">
-                    </div>
-                    <div class="form-group pt-0">
-                        <label for="departamento">Departamento</label>
-                        <input type="text" name="departamento_cliente" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese su Departamento (aclarar si no aplica)">
-                    </div>
-                    <div class="form-group">
-                        <label for="telefono">Telefono</label>
-                        <input type="text" name="telefono_cliente" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su numero de Telefono">
-                    </div >
+                {% if (session["carrito"] is defined and session["carrito"]|length != 0 ) %}
+                    
+                <h4 class="text-center">Total: {{total}}</h4> 
+
+                    {% if (session["user"] is defined and session["user"] != None) %}
+                <form class="d-flex justify-content-center container col-6" action="/Pedido" method="POST">
+                    <input type="hidden" name="id_cliente" value="{{session["user"]["id_cliente"]}}">
                    <button type="submit" class="btn btn-dark text-center mt-3">Realizar Pedido</button>
                 </form>
+                    {% else %}
+                <h4 class="text-center mt-5">Debes iniciar sesion para realizar el pedido</4>
+                 <div class="d-flex justify-content-center container col-6 mt-2">
+                   <a class="btn btn-dark text-center mt-3" href="/login">Iniciar Sesion</a>
+                </div>
+                    {%endif%}
+
+                {% else %}
+                
+                <h4 class="text-center">Oops! no has agregado ningun plato a tu Pedido</4>
+                 <div class="d-flex justify-content-center container col-6 mt-2">
+                   <a class="btn btn-dark text-center mt-3" href="/">Volver al menu</a>
+                </div>
+
+                {% endif %}
             </div>      
         </section>
 

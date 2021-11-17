@@ -14,20 +14,17 @@ def getPedidoById(id_pedido):
     
     
  
-def addPedido(nombre_cliente,apellido_cliente,direccion_cliente,departamento_cliente,telefono_cliente,detalles):
+def addPedido(id_cliente,detalles):
     
     session = Restaurant.getInstance().session
     
-    pedido = Pedido(nombre_cliente=nombre_cliente,
-                    apellido_cliente=apellido_cliente,
-                    direccion_cliente=direccion_cliente,
-                    departamento_cliente=departamento_cliente,
-                    telefono_cliente=telefono_cliente,
+    pedido = Pedido(id_cliente=id_cliente,
                     id_estado=1,
                     fecha_pedido=datetime.now())
     
     session.add(pedido)
     session.flush()
+    session.commit()
     
     for detalle in detalles:
         DetallePedidoService.addDetallePedido(id_pedido=pedido.id_pedido,
