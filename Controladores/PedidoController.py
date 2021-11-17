@@ -8,20 +8,12 @@ from Main import app
 @app.route('/Pedido', methods = ['POST'])
 def pedido():
     
-    nombre_cliente = request.form["nombre_cliente"]
-    apellido_cliente = request.form["apellido_cliente"]
-    direccion_cliente = request.form["direccion_cliente"]
-    departamento_cliente = request.form["departamento_cliente"]
-    telefono_cliente = request.form["telefono_cliente"]
+    id_cliente = request.form["id_cliente"]
     detalles = session['carrito']
     
     session['carrito'] = []
 
-    id_pedido = PedidoService.addPedido(nombre_cliente,
-                                  apellido_cliente,
-                                  direccion_cliente,
-                                  departamento_cliente,
-                                  telefono_cliente,
+    id_pedido = PedidoService.addPedido(id_cliente,
                                   detalles)
         
     return redirect(url_for('seguimiento',id_pedido=id_pedido))
@@ -32,7 +24,11 @@ def pedido():
 @app.route('/Pedido/<id_pedido>')
 def seguimiento(id_pedido):   
     
+    print('id_pedido: ' + str(id_pedido))
+    
     pedido = PedidoService.getPedidoById(id_pedido=id_pedido)
+    print(pedido)
+    
     
     if pedido is None:
         return render_template('pedido.html', pedidoExists=False) 
