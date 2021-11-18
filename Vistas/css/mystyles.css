@@ -176,6 +176,12 @@
         background-color: black;
         border-color: black;
     }
+
+    /* error en el formulario */
+    .form-control.error {
+    border-color: rgba(255, 0, 0, 1);
+    border-bottom-width: .2rem;
+    }
 }
 
 
@@ -367,5 +373,11 @@
 .btn-orange:hover {
     background-color: black;
     border-color: black;
+}
+
+/* error en el formulario */
+.form-control.error {
+    border-color: rgba(255, 0, 0, 1);
+    border-bottom-width: .2rem;
 }
 }

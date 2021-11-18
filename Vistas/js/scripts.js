@@ -16,7 +16,7 @@ function validarForm() {
     var regex3 = new RegExp('^[A-Z0-9]+$', 'i'); //expresion regular para validar solo letras y números
     var regex4 = new RegExp(/^[0-9]{7,8}$/); //expresion regular para validar solo números
     var regex5 = new RegExp(/^[A-Za-z0-9!#$%&'*+/=?^_`{|}~-]{8,15}$/); //expresion regular para validar
-
+    var regex6 = new RegExp(/^[0-9]{6,12}$/); //expresion regular para validar solo números telefono
 
     function validaNombre() {
 
@@ -28,7 +28,7 @@ function validarForm() {
             return true;
         }
         else {
-            elemento.className += " erro";
+            elemento.className += " error";
             alert("Ingrese un nombre válido");
             return false;
         }
@@ -44,7 +44,7 @@ function validarForm() {
             return true;
         }
         else {
-            elemento.className += " erro";
+            elemento.className += " error";
             alert("Ingrese un apellido válido");
             return false;
         }
@@ -60,8 +60,8 @@ function validarForm() {
             return true;
         }
         else {
-            elemento.className += " erro";
-            alert("Ingrese un documento v&aacute;lido");
+            elemento.className += " error";
+            alert("Ingrese un documento válido");
             return false;
         }
     }
@@ -76,7 +76,7 @@ function validarForm() {
             return true;
         }
         else {
-            elemento.className += " erro";
+            elemento.className += " error";
             alert("Ingrese una dirección de correo válida");
             return false;
         }
@@ -92,21 +92,37 @@ function validarForm() {
         if (your_pass === your_passb) {
             if (regex5.test(your_pass) && (your_pass != "null")) {
                 elemento.className = "form-control";
+                elemento2.className = "form-control";
                 return true;
             } else {
-                elemento.className += " erro";
+                elemento.className += " error";
                 alert("La contraseña debe tener entre 8 y 15 caracteres");
                 return false;
             }
         } else {
-            elemento2.className += " erro";
+            elemento2.className += " error";
             alert("La contraseña no coincide");
             return false;
         }
     }
 
+    function validaTelefono() {
 
-    if ((validaNombre() == true) && (validaApellido() == true) && (validaDni() == true) && (validaMail() == true) && (validaPass() == true)) {
+        var your_phone = document.getElementById("telefono").value;
+        var elemento = document.getElementById("telefono");
+
+        if (regex6.test(your_phone) && (your_phone != "null")) {
+            elemento.className = "form-control";
+            return true;
+        }
+        else {
+            elemento.className += " error";
+            alert("Ingrese un teléfono válido");
+            return false;
+        }
+    }
+
+    if ((validaNombre() == true) && (validaApellido() == true) && (validaDni() == true) && (validaMail() == true) && (validaPass() == true) && (validaTelefono() == true)) {
         return true;
     }
     else
